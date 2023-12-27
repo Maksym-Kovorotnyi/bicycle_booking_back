@@ -1,7 +1,7 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema()
+@Schema({ versionKey: false })
 export class Bicycle extends Document {
   @Prop()
   name: string;
