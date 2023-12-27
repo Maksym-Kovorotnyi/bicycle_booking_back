@@ -10,11 +10,26 @@ export class BicycleService {
   ) {}
 
   async findAll(): Promise<Bicycle[]> {
-    return this.bicycleModel.find().exec();
+    return this.bicycleModel.find();
   }
 
   async create(bicycle: Bicycle): Promise<Bicycle> {
-    const createdBicycle = new this.bicycleModel(bicycle);
+    const createdBicycle = new this.bicycleModel({
+      ...bicycle,
+      status: bicycle.status || 'available',
+    });
     return createdBicycle.save();
+  }
+  async update(id: string, status: Pick<Bicycle, 'status'>): Promise<Bicycle> {
+    const bicycle = await this.bicycleModel.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true, runValidators: true },
+    );
+    return bicycle;
+  }
+  async delete(id: string): Promise<string> {
+    await this.bicycleModel.findByIdAndDelete(id);
+    return 'deleted';
   }
 }

@@ -3,26 +3,26 @@ import { Document } from 'mongoose';
 
 @Schema({ versionKey: false })
 export class Bicycle extends Document {
-  @Prop()
+  @Prop({ required: true, minlength: 5, maxlength: 50 })
   name: string;
 
-  @Prop()
+  @Prop({ required: true, minlength: 5 })
   type: string;
 
-  @Prop()
+  @Prop({ required: true, minlength: 5 })
   color: string;
 
-  @Prop()
-  wheelSize: string;
+  @Prop({ required: true, minlength: 5 })
+  wheelSize: number;
 
-  @Prop()
-  price: string;
+  @Prop({ required: true })
+  price: number;
 
-  @Prop()
+  @Prop({ required: true, minlength: 5 })
   description: string;
 
-  @Prop()
-  status?: string;
+  @Prop({ enum: ['available', 'busy', 'unavailable'] })
+  status: 'available' | 'busy' | 'unavailable';
 }
 
 export const BicycleSchema = SchemaFactory.createForClass(Bicycle);
