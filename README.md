@@ -11,11 +11,8 @@ Make sure you have the following installed before running the project:
 Getting Started
 
 1. Clone the repository:
-
-   ```bash
-   git clone
-   cd bicycle_booking
-   ```
+   git clone https://github.com/Maksym-Kovorotnyi/bicycle_booking_back
+   cd bicycle_booking_back
 
 2. Install dependencies:
    npm install
