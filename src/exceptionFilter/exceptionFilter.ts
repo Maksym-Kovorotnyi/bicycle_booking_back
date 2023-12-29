@@ -14,15 +14,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const message = exception.message;
 
     if (exception.name === 'ValidationError') {
-      console.log('this');
-
       return response.status(400).json({
         statusCode: 400,
         message,
       });
     }
     const status = exception.getStatus();
-    console.log('this222');
 
     return response.status(status).json({
       statusCode: status,
